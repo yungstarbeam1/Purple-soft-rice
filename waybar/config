@@ -1,0 +1,105 @@
+{
+  "layer": "bot",
+  "spacing": 0,
+  "height": 0,
+  "margin-bottom": 0,
+  "margin-top": 15,
+  "position": "top",
+  "margin-right": 500,
+  "margin-left": 500,
+  "modules-left": [
+    "hyprland/workspaces",
+    "sway/workspaces",
+    "bluetooth",
+    "custom/applauncher"
+
+  ],
+  "modules-center": [
+    "clock",
+    "custom/date"
+
+  ],
+  "modules-right": [
+    "network",
+    "tray",    
+    "pulseaudio",
+    "battery"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "tooltip": false
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "tooltip": false
+
+  },
+  "clock": {
+    "disable-scroll": true,
+    "format": "{:%I:%M}",
+    "tooltip": false,
+    "interval": 10,
+    "on-click": "gnome-calendar"
+  },
+  "bluetooth": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "tooltip": false,
+    "on-click": "blueman-manager"
+  },
+  "custom/applauncher": {
+    "format": "",
+    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
+    "tooltip": false
+  },
+  "tray": {
+    "spacing": 10,
+    "tooltip": false
+  },
+  "custom-date": {
+    "format": "{:%a %-d }",
+    "tooltip": false,
+    "interval": 60,
+    "on-click": "gnome-calendar"
+
+  },
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": " ",
+    "format-disconnected": " No Network",
+    "interval": 5,
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "max-volume": 150,
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl set-sink-volume @DEFAULT_SINK@ 100% --",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "nospacing": 1,
+    "format-muted": "X",
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",   
+    "format-plugged": " {capacity}%",      
+    "format-alt": "{icon} {time}",
+    "format-full": " {capacity}%",           
+    "format-icons": ["", "", "", "", ""], 
+    "states": {
+        "warning": 20,
+        "critical": 10
+    },
+    "interval": 10
+}
+}
