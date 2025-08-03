@@ -3,7 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-
+exec export XDG_CURRENT_DESKTOP=sway
 # Set the default font used by sway, I like maple mono.
 font pango:Maple Mono Regular 10
 
@@ -12,7 +12,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id sh -c ' eval $(gnome-keyring-daemon --login) eval $(gnome-keyring-daemon --start --components=secrets,ssh) export SSH_AUTH_SOCK'
 # Start the network manager applet, can comment out this line if you don't use network manager.
 exec nm-applet
-exec mako
+exec swaync
 exec fastfetch
 exec_always autotiling
 
@@ -51,15 +51,14 @@ for_window [app_id="kitty"] {
 }
 
 #Startups
-
-
+bindsym $mod+p exec --no-startup-id "cd /home/ailiak/eww/target/release && ./eww close powermenu || (./eww daemon & sleep 0.3 && ./eww open powermenu)"
 # display Video capture
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user start xdg-desktop-portal-wlr
 
 # The border colors:
 
-#                         border    bg        text      ind       child border
+#                        border    bg     text    ind  child border
 client.focused          #d8cab8 #141216 #d8cab8 #d8cab8 #d8cab8
 client.focused_inactive #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 client.unfocused        #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
@@ -71,13 +70,12 @@ client.placeholder      #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg "/home/ailiak/Pictures/wallpaper.png" fill
 # Example configuration:
-#laptop output res
+#
 output eDP-1 resolution 1920x1080 position 1920,0
 
-#display for the tv but keepin it 4k, not true mirroring this will only fix the scaling
-#for proper mirroring git clone https://github.com/gloriouseggroll/wmirror my friend!
+#4k display for the tv but keepin it 4k, not true mirroring this will only fix the sclaing
+#for proper mirroring i could not get it to woork sadly
 output HDMI-A-1 mode 3840x2160@60Hz scale 1.5
-
 
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -125,6 +123,8 @@ output HDMI-A-1 mode 3840x2160@60Hz scale 1.5
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    #bindgesture gesture:three_finger_tap exec $menu    
     
     #req grim for screenshotting and wl-copy for clipboarding.
     #flameshot not compatible with sway so this arr bassicaly emulates snipping tool
