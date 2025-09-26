@@ -29,9 +29,9 @@
   padding: 6px;
   margin-bottom: 8px;
   margin-left: 12px;
-  margin-right: 12;
+  margin-right: 12px;
 
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 #entry:selected {
@@ -68,5 +68,5 @@
 
 #img {
   padding: 4px;
-  margin-right: 6px;
+  margin-right: 4px;
 }
