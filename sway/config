@@ -4,10 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 exec export XDG_CURRENT_DESKTOP=sway
-# Set the default font 
+# Set the default font used by sway, I like maple mono.
 font pango:Maple Mono Regular 10
-
-
 
 # Start the auth agent, if you don't use this you can comment out this line.
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -20,19 +18,19 @@ exec_always autotiling
 
 ### Variables
 #
-# win key. Use Mod1 for Alt.
+# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys
+# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Terminal emulator
+# Your preferred terminal emulator
 set $term kitty
-# app launcher
+# Your preferred application launcher
 set $menu pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun
 
-set $file_explorer thunar
+set $file_explorer nemo
 # Gaps between windows
 gaps inner 8px
 gaps outer 4px
@@ -53,15 +51,15 @@ for_window [app_id="kitty"] {
 }
 
 #Startups
-bindsym $mod+p exec --no-startup-id "cd /home/ailiak/eww/target/release && ./eww close powermenu || (./eww daemon & sleep 0.3 && ./eww open powermenu)"
+
+
 # display Video capture
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user start xdg-desktop-portal-wlr
-exec systemctl --user enable mpd.service
 
 # The border colors:
 
-#                        border    bg     text    ind  child border
+#                         border    bg        text      ind       child border
 client.focused          #d8cab8 #141216 #d8cab8 #d8cab8 #d8cab8
 client.focused_inactive #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 client.unfocused        #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
@@ -71,27 +69,27 @@ client.placeholder      #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg "/home/ailiak/Pictures/wallpapers/wallpaper.png" fill
-# Example configuration:
+output * bg "/home/ailiak/Pictures/wallpaper.png" fill
 #
 output eDP-1 resolution 1920x1080 position 1920,0
 
-#4k display for the tv but keepin it 4k, not true mirroring this will only fix the sclaing
-#for proper mirroring i could not get it to woork sadly
+#4k display for the whenever i project but keepin it 4k, 
+#not true mirroring send windowsw to 2, 
+#wont be visible on this screen
+#for proper mirroring i could not get it to work sadly
 output HDMI-A-1 mode 3840x2160@60Hz scale 1.5
 
 #
-####### You can get the names of your outputs by running: swaymsg -t get_outputs
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
 #
 # Example configuration:
 #
 # exec swayidle -w \
-#
- #         timeout 300 'swaylock -f -c 000000' \
-  #        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-   #       before-sleep 'swaylock -f -c 000000'
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -131,7 +129,7 @@ output HDMI-A-1 mode 3840x2160@60Hz scale 1.5
     #bindgesture gesture:three_finger_tap exec $menu    
     
     #req grim for screenshotting and wl-copy for clipboarding.
-    #flameshot not compatible with sway so this arr bassicaly emulates snipping tool
+    #flameshot not compatible with sway so this arr basicaly emulates snipping tool
     #ESC to exit grim
     bindsym Print exec grim -g "$(slurp)" - | wl-copy
     bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y-%m-%d-%H%M%S').png    # Drag floating windows by holding down $mod and left mouse button.
@@ -162,7 +160,7 @@ output HDMI-A-1 mode 3840x2160@60Hz scale 1.5
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
-    bindsym $mod+Shift+m exec bash -c "QT_QPA_PLATFORMTHEME=qt5ct QT_STYLE_OVERRIDE=Fusion strawberry"    # Move the focused window with the same, but add Shift
+    # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
@@ -199,12 +197,7 @@ output HDMI-A-1 mode 3840x2160@60Hz scale 1.5
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-
-    # Workspace shifting based on trackpad gesture:
-    # 3-finger swipe left/right: previous/next numbered workspace, requires one to already have been established
-    bindgesture swipe:right workspace prev
-    bindgesture swipe:left workspace next
-##
+#
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
