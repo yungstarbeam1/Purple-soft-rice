@@ -3,7 +3,7 @@
   "spacing": 0,
   "height": 0,
   "margin-bottom": 0,
-  "margin-top": 15,
+  "margin-top": 10,
   "position": "top",
   "margin-right": 500,
   "margin-left": 500,
@@ -25,11 +25,7 @@
     "pulseaudio",
     "battery"
   ],
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": false,
-    "tooltip": false
-  },
+
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
@@ -44,19 +40,19 @@
     "on-click": "gnome-calendar"
   },
   "bluetooth": {
-    "disable-scroll": true,
-    "all-outputs": false,
-    "tooltip": false,
-    "on-click": "blueman-manager"
+    "format": "",
+    "on-click": "blueman-manager",
+    "tooltip": false
   },
   "custom/applauncher": {
-    "format": "",
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
+    "format": "",
+    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 13",
     "tooltip": false
   },
   "tray": {
     "spacing": 10,
     "tooltip": false
+    
   },
   "custom-date": {
     "format": "{:%a %-d }",
@@ -66,9 +62,9 @@
 
   },
   "network": {
-    "format-wifi": "",
+    "format-wifi": ":)",
     "format-ethernet": " ",
-    "format-disconnected": " No Network",
+    "format-disconnected": ":( No wifi",
     "interval": 5,
     "tooltip": false
   },
@@ -93,13 +89,22 @@
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",   
     "format-plugged": " {capacity}%",      
-    "format-alt": "{icon} {time}",
     "format-full": " {capacity}%",           
     "format-icons": ["", "", "", "", ""], 
+    "on-click": "kitty --hold btop",
+    
     "states": {
         "warning": 20,
         "critical": 10
     },
     "interval": 10
+
+  },
+  "custom/cava": {
+    "format": "{text}",
+    "exec": "~/.config/waybar/cava_module.py",
+    "return-type": "json"
+
+    
 }
 }
