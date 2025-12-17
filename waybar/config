@@ -45,8 +45,8 @@
     "tooltip": false
   },
   "custom/applauncher": {
-    "format": "",
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 13",
+    "format": "",
+    "on-click": "firefox",
     "tooltip": false
   },
   "tray": {
