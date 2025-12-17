@@ -49,7 +49,7 @@ window#waybar {
   color: #141216;
   transition-duration: 120ms;
   font-weight: bolder;
-  min-width: 42px;
+  min-width: 51px;
 
 
 }
@@ -157,7 +157,8 @@ window#waybar {
 
 #battery {
   color: #d8cab8;
-  margin-right: 3px;
+  margin-right: 0.2cm;
+
 }
 
 #battery:hover {
