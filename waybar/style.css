@@ -1,5 +1,4 @@
 * {
-  /* General taskbar font, I like maple mono and other icons are awesome fonts*/
   font-family: Maple Mono;
   border-radius: 8;
   font-size: 14px;
@@ -8,7 +7,7 @@
 }
 
 window#waybar {
-  /* Linear gradients are used because it makes less harsh rounded border radius, gtk bug :p */
+  /* Linear gradients are used because it makes less harsh rounded border radius, gtk bug */
   background-image: linear-gradient(to bottom, #141216 100%);
   border-radius: 14px;
   padding: 0px;
@@ -22,6 +21,7 @@ window#waybar {
 #tray,
 #workspaces,
 #bluetooth,
+#custom-cava,
 #pulseaudio {
   background-image: linear-gradient(to bottom, #27232b 100%);
 
@@ -30,7 +30,6 @@ window#waybar {
   padding: 4px 8px;
   border-radius: 8px;
   color: #d8cab8;
-
   border-style: none;
   transition-duration: 120ms;
 }
@@ -38,45 +37,57 @@ window#waybar {
 #clock:hover {
   background-image: linear-gradient(to bottom, #ac82e9 100%);
   color: #141216;
+  font-weight: bolder;
   transition-duration: 120ms;
+  min-width: 45px;
+
+}
+
+
+#pulseaudio:hover {
+  background-image: linear-gradient(to bottom, #ac82e9 100%);
+  color: #141216;
+  transition-duration: 120ms;
+  font-weight: bolder;
+  min-width: 42px;
+
+
+}
+
+#custom-applauncher {
+  font-weight: bold;
+  transition-duration: 100ms;
+  min-width: 16px;
+
+}
+
+#custom-applauncher:hover {
+  background-image: linear-gradient(to bottom, #ac82e9, #ac82e9);
+  color: #141216;
+  transition-duration: 120ms;
+  min-width: 20px;
+
+  
 }
 
 #tray:hover {
   background-image: linear-gradient(to bottom, #ac82e9 100%);
   color: #141216;
   transition-duration: 120ms;
+  min-width: 20px;
+
 
 }
-#pulseaudio:hover {
-  background-image: linear-gradient(to bottom, #ac82e9 100%);
-  color: #141216;
-  transition-duration: 120ms;
-}
-
-#custom-applauncher {
-  font-weight: bold;
-  transition-duration: 120ms;
-}
-#custom-applauncher:hover {
-  background-image: linear-gradient(to bottom, #ac82e9 100%);
-  color: #141216;
-  transition-duration: 120ms;
-}
-
 
 #tray button{
-  transition-duration: 100ms;
+  transition-duration: 120ms;
   all: initial;
   min-width: 0;
   margin-right: 0.2cm;
   margin-left: 0.2cm;
 }
 
-#tray button:hover {
-  background-image: linear-gradient(to bottom, #ac82e9 100%);
-  color: #141216;
-  transition-duration: 120ms;
-}
+
 
 #tray menu {
   background-color: #141216;
@@ -102,16 +113,17 @@ window#waybar {
 #bluetooth button{
   transition-duration: 100ms;
   all: initial;
-  min-width: 0;
-  font-weight: bold;
+  min-width: 16px;
   color: #d8cab8;
   margin-right: 0.2cm;
   margin-left: 0.2cm;
 }
 #bluetooth:hover {
-  background-image: linear-gradient(to bottom, #27232b 100%);
-  color: #ac82e9;
-  font-weight: bold;
+  background-image: linear-gradient(to bottom, #ac82e9, #ac82e9);
+  color: #141216;
+  transition-duration: 120ms;
+  min-width: 20px;
+
 
 }
 
@@ -128,6 +140,8 @@ window#waybar {
 #workspaces button:hover {
   transition-duration: 120ms;
   color: #8f56e1;
+  min-width: 12px;
+
 }
 #workspaces button.focused {
   color: #ac82e9;
@@ -143,7 +157,16 @@ window#waybar {
 
 #battery {
   color: #d8cab8;
-  margin-right: 6px;
+  margin-right: 3px;
+}
+
+#battery:hover {
+  background-image: linear-gradient(to bottom, #ac82e9 100%);
+  color: #141216;
+  font-weight: bolder;
+  transition-duration: 120ms;
+  min-width: 51px;
+
 }
 #battery.warning,
 #battery.critical,
